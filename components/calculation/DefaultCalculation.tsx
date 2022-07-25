@@ -10,7 +10,7 @@ type Props = {
   changes: Changes
 }
 
-const headers = ['возраст', 'зп', 'платежи', 'остаток', 'накоплено за год', 'накоплено всего']
+const headers = ['возраст', 'зп', 'платежи', 'остаток', 'накоплено за год', 'процент по вкладу', 'накоплено всего']
 
 export const DefaultCalculation = ({ages, salary, payments, changes}: Props) => {
 
@@ -46,14 +46,16 @@ export const DefaultCalculation = ({ages, salary, payments, changes}: Props) => 
     const allPayments = countAllPayment(simulatingPayments)
     const saveMoney = simulatingSalary.salary * MONEY_AFTER_TAX - allPayments
     const saveMoneyYear = saveMoney * 12
-    savingMoney += saveMoneyYear
+    const additionalMoney = savingMoney * changes.percentToSaving / 100
+    savingMoney += saveMoneyYear + additionalMoney
     const row = [
       simulatingAge,
       simulatingSalary.salary,
       allPayments,
       saveMoney,
       saveMoneyYear,
-      savingMoney
+      additionalMoney,
+      savingMoney,
     ]
     data.push(row)
     simulatingSalary = getSalaryGrown(simulatingSalary, changes.salaryGrown)

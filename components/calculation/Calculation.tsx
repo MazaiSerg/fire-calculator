@@ -16,7 +16,8 @@ export const Calculation = () => {
   const [moneyFun, setMoneyFun] = useState(20_000)
 
   const [inflation, setInflation] = useState(8)
-  const [salaryGrown, setSalaryGrown] = useState(5)
+  const [salaryGrown, setSalaryGrown] = useState(8)
+  const [percentToSaving, setPercentToSaving] = useState(5)
 
   return <div>
     <div>
@@ -45,11 +46,12 @@ export const Calculation = () => {
       <div>
         <Input  label={'Предполагаемая инфляция'} setValue={setInflation} value={inflation}/>
         <Input  label={'Предполагаемый рост зп'} setValue={setSalaryGrown} value={salaryGrown}/>
+        <Input  label={'Процент на остаток'} setValue={setPercentToSaving} value={percentToSaving}/>
       </div>
     </div>
     <DefaultCalculation
       ages={{currentAge, deathAge}}
-      changes={{inflation, salaryGrown}}
+      changes={{inflation, salaryGrown, percentToSaving}}
       payments={{
         rent: moneyRent,
         flat: moneyFlat,

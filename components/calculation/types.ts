@@ -19,4 +19,5 @@ export type Payments = {
 export type Changes = {
   inflation: number
   salaryGrown: number
+  percentToSaving: number
 }
