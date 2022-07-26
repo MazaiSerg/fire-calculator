@@ -1,4 +1,5 @@
 import React from 'react';
+import { TextField } from '@mui/material';
 
 type Props<T> = {
 	label: string;
@@ -13,8 +14,13 @@ export function Input({ label, value, setValue }: Props<number>) {
 	};
 	return (
 		<div>
-			<label>{label}</label>
-			<input type="number" value={value} onChange={handleChange} />
+			<TextField
+				type="number"
+				value={value}
+				onChange={handleChange}
+				label={label}
+				margin="normal"
+			/>
 		</div>
 	);
 }

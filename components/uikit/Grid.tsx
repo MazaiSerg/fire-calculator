@@ -10,7 +10,14 @@ type Props = {
 export function Grid({ title, headers, rows }: Props) {
 	const transformCell = (cell: number | string) => {
 		if (typeof cell === 'string') return cell;
-		return cell.toFixed(2);
+		const roundedNumber = cell.toFixed(0);
+		const numberWithSpaces = roundedNumber
+			.split('')
+			.reverse()
+			.map((digit, index) => (index % 3 === 0 ? `${digit} ` : digit))
+			.reverse()
+			.join('');
+		return numberWithSpaces;
 	};
 	return (
 		<div>
@@ -18,7 +25,7 @@ export function Grid({ title, headers, rows }: Props) {
 			<MuiGrid container spacing={2}>
 				<MuiGrid container item>
 					{headers.map((head) => (
-						<MuiGrid item key={head} xs={2}>
+						<MuiGrid item key={head} xs={1}>
 							{head}
 						</MuiGrid>
 					))}
@@ -26,7 +33,7 @@ export function Grid({ title, headers, rows }: Props) {
 				{rows.map((row, index) => (
 					<MuiGrid container item key={index}>
 						{row.map((item) => (
-							<MuiGrid item key={item} xs={2}>
+							<MuiGrid item key={item} xs={1}>
 								{transformCell(item)}
 							</MuiGrid>
 						))}
