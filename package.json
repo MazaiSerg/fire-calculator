@@ -4,10 +4,11 @@
   "private": true,
   "homepage": "https://mazaiserg.github.io/fire-calculator",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d .next",
+    "predeploy": "yarn run build && yarn run export",
+    "deploy": "gh-pages -d out",
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
     "lint": "next lint"
   },
