@@ -31,7 +31,7 @@ export function Grid({ title, headers, rows }: Props) {
 					))}
 				</MuiGrid>
 				{rows.map((row, index) => (
-					<MuiGrid container item key={index}>
+					<MuiGrid container item key={row.join('')}>
 						{row.map((item) => (
 							<MuiGrid item key={item} xs={1}>
 								{transformCell(item)}
