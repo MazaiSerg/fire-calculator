@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://MazaiSerg.github.io/fire-calculator",
+  "homepage": "https://mazaiserg.github.io/fire-calculator",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d .next",
