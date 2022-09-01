@@ -20,6 +20,7 @@ export function Input({ label, value, setValue }: Props<number>) {
 				onChange={handleChange}
 				label={label}
 				margin="normal"
+				size="small"
 			/>
 		</div>
 	);
