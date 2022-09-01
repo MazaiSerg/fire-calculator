@@ -23,7 +23,7 @@ export function Calculation() {
 		<div>
 			<div>
 				<h4>Личные данные</h4>
-				<div>
+				<div style={{ display: 'flex', gap: '20px' }}>
 					<Input
 						label="Ваш текущий возраст"
 						setValue={setCurrentAge}
@@ -37,7 +37,7 @@ export function Calculation() {
 				</div>
 
 				<h4>Данные о зарплате</h4>
-				<div>
+				<div style={{ display: 'flex', gap: '20px' }}>
 					<Input
 						label="Ваша текущая зарплата"
 						setValue={setSalary}
@@ -51,7 +51,7 @@ export function Calculation() {
 				</div>
 
 				<h4>Данные о тратах</h4>
-				<div>
+				<div style={{ display: 'flex', gap: '20px' }}>
 					<Input
 						label="Стоимость аренды"
 						setValue={setMoneyRent}
@@ -76,7 +76,7 @@ export function Calculation() {
 				</div>
 
 				<h4>Средние изменения</h4>
-				<div>
+				<div style={{ display: 'flex', gap: '20px' }}>
 					<Input
 						label="Предполагаемая инфляция"
 						setValue={setInflation}
