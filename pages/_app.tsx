@@ -1,13 +1,16 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<>
-			<Head>
-				<link rel="shortcut icon" href="/favicon.ico" />
-			</Head>
+			<NextSeo
+				title="FIRE калькулятор"
+				description="Калькулятор расчета досрочного выхода на пенсию"
+				canonical="https://mazaiserg.github.io/fire-calculator/"
+			/>
+
 			<Component {...pageProps} />
 		</>
 	);
