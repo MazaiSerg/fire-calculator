@@ -1,6 +1,6 @@
 .container {
-  padding: 0 2rem;
   display: flex;
+  justify-content: space-around;
 }
 
 .header {
@@ -12,7 +12,6 @@
   max-width: 800px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .main {
