@@ -9,6 +9,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 				title="FIRE калькулятор"
 				description="Калькулятор расчета досрочного выхода на пенсию"
 				canonical="https://mazaiserg.github.io/fire-calculator/"
+				additionalLinkTags={[
+					{
+						rel: 'shortcut icon',
+						href: 'favicon.ico',
+					},
+				]}
 			/>
 
 			<Component {...pageProps} />
