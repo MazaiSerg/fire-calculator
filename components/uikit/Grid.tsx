@@ -22,18 +22,18 @@ export function Grid({ title, headers, rows }: Props) {
 	return (
 		<div>
 			{title && <h3>{title}</h3>}
-			<MuiGrid container spacing={2}>
-				<MuiGrid container item>
+			<MuiGrid container spacing={2} columns={8}>
+				<MuiGrid container item wrap="nowrap">
 					{headers.map((head) => (
-						<MuiGrid item key={head} xs={1}>
+						<MuiGrid item key={head} xs={2}>
 							{head}
 						</MuiGrid>
 					))}
 				</MuiGrid>
 				{rows.map((row, index) => (
-					<MuiGrid container item key={row.join('')}>
+					<MuiGrid container item key={row.join('')} wrap="nowrap">
 						{row.map((item) => (
-							<MuiGrid item key={item} xs={1}>
+							<MuiGrid item key={item} xs={2}>
 								{transformCell(item)}
 							</MuiGrid>
 						))}
