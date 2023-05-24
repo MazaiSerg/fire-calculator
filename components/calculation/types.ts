@@ -6,6 +6,7 @@ export type Ages = {
 export type Salary = {
 	salary: number;
 	regionBonus: number;
+	tax: number;
 };
 
 export type Payments = {

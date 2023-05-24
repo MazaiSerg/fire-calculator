@@ -1,6 +1,6 @@
 import React from 'react';
 import { Ages, Changes, Payments, Salary } from './types';
-import { MONEY_AFTER_TAX, YEARS_NEEDED } from './const';
+import { YEARS_NEEDED } from './const';
 import { Grid } from '../uikit/Grid';
 
 type Props = {
@@ -8,6 +8,7 @@ type Props = {
 	salary: Salary;
 	payments: Payments;
 	changes: Changes;
+	startWithMoney: number;
 };
 
 const headers = [
@@ -20,7 +21,13 @@ const headers = [
 	'накоплено всего',
 ];
 
-export function DefaultCalculation({ ages, salary, payments, changes }: Props) {
+export function DefaultCalculation({
+	ages,
+	salary,
+	payments,
+	changes,
+	startWithMoney,
+}: Props) {
 	const getPaymentsWithInflation = (
 		payments: Payments,
 		inflation: number,
@@ -38,8 +45,8 @@ export function DefaultCalculation({ ages, salary, payments, changes }: Props) {
 	const getSalaryGrown = (salary: Salary, grown: number): Salary => {
 		const grownCoef = 1 + grown / 100;
 		return {
+			...salary,
 			salary: salary.salary * grownCoef,
-			regionBonus: salary.regionBonus,
 		};
 	};
 
@@ -56,11 +63,12 @@ export function DefaultCalculation({ ages, salary, payments, changes }: Props) {
 	const data = [];
 	let simulatingSalary = salary;
 	let simulatingPayments = payments;
-	let savingMoney = 0;
+	let savingMoney = startWithMoney;
 	let simulatingAge = ages.currentAge;
 	for (; simulatingAge < ages.deathAge; simulatingAge++) {
 		const allPayments = countAllPayment(simulatingPayments);
-		const saveMoney = simulatingSalary.salary * MONEY_AFTER_TAX - allPayments;
+		const saveMoney =
+			simulatingSalary.salary * (1 - simulatingSalary.tax / 100) - allPayments;
 		const saveMoneyYear = saveMoney * 12;
 		const additionalMoney = (savingMoney * changes.percentToSaving) / 100;
 		savingMoney += saveMoneyYear + additionalMoney;

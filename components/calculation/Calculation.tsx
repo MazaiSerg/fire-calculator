@@ -5,9 +5,11 @@ import { DefaultCalculation } from './DefaultCalculation';
 export function Calculation() {
 	const [currentAge, setCurrentAge] = useState(30);
 	const [deathAge, setDeathAge] = useState(78);
+	const [startWithMoney, setStartWithMoney] = useState(1_000_000);
 
 	const [salary, setSalary] = useState(250_000);
 	const [regionBonus, setRegionBonus] = useState(0);
+	const [tax, setTax] = useState(6);
 
 	const [moneyEat, setMoneyEat] = useState(40_000);
 	const [moneyRent, setMoneyRent] = useState(50_000);
@@ -22,7 +24,7 @@ export function Calculation() {
 	return (
 		<div>
 			<div>
-				<h4>Личные данные</h4>
+				<h4 style={{ marginBlockEnd: '0.25em' }}>Личные данные</h4>
 				<div style={{ display: 'flex', gap: '20px' }}>
 					<Input
 						label="Ваш текущий возраст"
@@ -34,9 +36,14 @@ export function Calculation() {
 						setValue={setDeathAge}
 						value={deathAge}
 					/>
+					<Input
+						label="Начальный капитал"
+						setValue={setStartWithMoney}
+						value={startWithMoney}
+					/>
 				</div>
 
-				<h4>Данные о зарплате</h4>
+				<h4 style={{ marginBlockEnd: '0.25em' }}>Данные о зарплате</h4>
 				<div style={{ display: 'flex', gap: '20px' }}>
 					<Input
 						label="Ваша текущая зарплата"
@@ -48,9 +55,14 @@ export function Calculation() {
 						setValue={setRegionBonus}
 						value={regionBonus}
 					/>
+					<Input
+						label="Процент отчислений с зарплаты"
+						setValue={setTax}
+						value={tax}
+					/>
 				</div>
 
-				<h4>Данные о тратах</h4>
+				<h4 style={{ marginBlockEnd: '0.25em' }}>Данные о тратах</h4>
 				<div style={{ display: 'flex', gap: '20px' }}>
 					<Input
 						label="Стоимость аренды"
@@ -75,7 +87,7 @@ export function Calculation() {
 					/>
 				</div>
 
-				<h4>Средние изменения</h4>
+				<h4 style={{ marginBlockEnd: '0.25em' }}>Средние изменения</h4>
 				<div style={{ display: 'flex', gap: '20px' }}>
 					<Input
 						label="Предполагаемая инфляция"
@@ -104,7 +116,8 @@ export function Calculation() {
 					fun: moneyFun,
 					health: moneyHealth,
 				}}
-				salary={{ salary, regionBonus }}
+				salary={{ salary, regionBonus, tax }}
+				startWithMoney={startWithMoney}
 			/>
 		</div>
 	);
