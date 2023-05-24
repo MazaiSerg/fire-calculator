@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import { Checkbox } from '@mui/material';
 import { Input } from '../uikit/Input';
 import { BuyingFlatCalculation } from './BuyingFlatCalculation';
 import { DefaultCalculation } from './DefaultCalculation';
-import { Checkbox } from "@mui/material";
 
 export function Calculation() {
 	const [currentAge, setCurrentAge] = useState(30);
