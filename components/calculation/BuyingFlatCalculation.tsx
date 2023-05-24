@@ -77,8 +77,8 @@ export function BuyingFlatCalculation({
 		savingMoney += saveMoneyYear + additionalMoney;
 		currentFlatCost *= 1 + changes.inflation / 100;
 
-		if (simulatingPayments.flat > 0 && savingMoney > currentFlatCost) {
-			simulatingPayments.flat = 0;
+		if (simulatingPayments.rent > 0 && savingMoney > currentFlatCost) {
+			simulatingPayments.rent = 0;
 			savingMoney -= currentFlatCost;
 			buingFlatAge = simulatingAge;
 		}
@@ -106,7 +106,8 @@ export function BuyingFlatCalculation({
 
 	return (
 		<div>
-			<span>Можно выйти на пенсию в {simulatingAge}</span><br/>
+			<span>Можно выйти на пенсию в {simulatingAge}</span>
+			<br />
 			<span>Квартира куплена в {buingFlatAge}</span>
 			<Grid headers={headers} rows={data} title="Процесс накопления" />
 		</div>
