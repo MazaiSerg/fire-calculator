@@ -106,7 +106,7 @@ export function BuyingFlatCalculation({
 
 	return (
 		<div>
-			<span>Можно выйти на пенсию в {simulatingAge}</span>
+			<span>Можно выйти на пенсию в {simulatingAge}</span><br/>
 			<span>Квартира куплена в {buingFlatAge}</span>
 			<Grid headers={headers} rows={data} title="Процесс накопления" />
 		</div>
