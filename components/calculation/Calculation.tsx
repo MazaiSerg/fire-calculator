@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Input } from '../uikit/Input';
-import { DefaultCalculation } from './DefaultCalculation';
+import { BuyingFlatCalculation } from './BuyingFlatCalculation';
 
 export function Calculation() {
 	const [currentAge, setCurrentAge] = useState(30);
@@ -20,6 +20,7 @@ export function Calculation() {
 	const [inflation, setInflation] = useState(8);
 	const [salaryGrown, setSalaryGrown] = useState(8);
 	const [percentToSaving, setPercentToSaving] = useState(5);
+	const [flatCost, setFlatCost] = useState(10_000_000);
 
 	return (
 		<div>
@@ -104,9 +105,14 @@ export function Calculation() {
 						setValue={setPercentToSaving}
 						value={percentToSaving}
 					/>
+					<Input
+						label="Стоимость жилья для покупки"
+						setValue={setFlatCost}
+						value={flatCost}
+					/>
 				</div>
 			</div>
-			<DefaultCalculation
+			<BuyingFlatCalculation
 				ages={{ currentAge, deathAge }}
 				changes={{ inflation, salaryGrown, percentToSaving }}
 				payments={{
@@ -118,6 +124,7 @@ export function Calculation() {
 				}}
 				salary={{ salary, regionBonus, tax }}
 				startWithMoney={startWithMoney}
+				flatCost={flatCost}
 			/>
 		</div>
 	);
