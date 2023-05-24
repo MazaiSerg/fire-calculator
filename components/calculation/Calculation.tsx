@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Input } from '../uikit/Input';
 import { BuyingFlatCalculation } from './BuyingFlatCalculation';
+import { DefaultCalculation } from './DefaultCalculation';
+import { Checkbox } from "@mui/material";
 
 export function Calculation() {
 	const [currentAge, setCurrentAge] = useState(30);
@@ -21,6 +23,7 @@ export function Calculation() {
 	const [salaryGrown, setSalaryGrown] = useState(8);
 	const [percentToSaving, setPercentToSaving] = useState(5);
 	const [flatCost, setFlatCost] = useState(10_000_000);
+	const [isBuyFlat, setIsBuyFlat] = useState(true);
 
 	return (
 		<div>
@@ -105,27 +108,49 @@ export function Calculation() {
 						setValue={setPercentToSaving}
 						value={percentToSaving}
 					/>
-					<Input
-						label="Стоимость жилья для покупки"
-						setValue={setFlatCost}
-						value={flatCost}
-					/>
+					<div style={{ display: 'flex' }}>
+						<Checkbox
+							checked={isBuyFlat}
+							onChange={() => setIsBuyFlat((prev) => !prev)}
+						/>
+						<Input
+							label="Стоимость жилья для покупки"
+							setValue={setFlatCost}
+							value={flatCost}
+						/>
+					</div>
 				</div>
 			</div>
-			<BuyingFlatCalculation
-				ages={{ currentAge, deathAge }}
-				changes={{ inflation, salaryGrown, percentToSaving }}
-				payments={{
-					rent: moneyRent,
-					flat: moneyFlat,
-					eat: moneyEat,
-					fun: moneyFun,
-					health: moneyHealth,
-				}}
-				salary={{ salary, regionBonus, tax }}
-				startWithMoney={startWithMoney}
-				flatCost={flatCost}
-			/>
+			{isBuyFlat ? (
+				<BuyingFlatCalculation
+					ages={{ currentAge, deathAge }}
+					changes={{ inflation, salaryGrown, percentToSaving }}
+					payments={{
+						rent: moneyRent,
+						flat: moneyFlat,
+						eat: moneyEat,
+						fun: moneyFun,
+						health: moneyHealth,
+					}}
+					salary={{ salary, regionBonus, tax }}
+					startWithMoney={startWithMoney}
+					flatCost={flatCost}
+				/>
+			) : (
+				<DefaultCalculation
+					ages={{ currentAge, deathAge }}
+					changes={{ inflation, salaryGrown, percentToSaving }}
+					payments={{
+						rent: moneyRent,
+						flat: moneyFlat,
+						eat: moneyEat,
+						fun: moneyFun,
+						health: moneyHealth,
+					}}
+					salary={{ salary, regionBonus, tax }}
+					startWithMoney={startWithMoney}
+				/>
+			)}
 		</div>
 	);
 }
